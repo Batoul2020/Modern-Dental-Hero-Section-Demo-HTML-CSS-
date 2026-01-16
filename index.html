@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Dental Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --text: #f3f4f8;
+      --muted: #cbd2e1;
+      --accent: #5c7cfa;
+      --accent2: #2dd4bf;
+      --glass: rgba(255,255,255,0.10);
+      --glass2: rgba(255,255,255,0.18);
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
+    body{
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* NAV */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: var(--glass);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    .nav-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo img{
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .nav-links{
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a{
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
+    .nav-links a:hover{
+      opacity: 1;
+    }
+
+    .btn{
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(135deg, rgba(92,124,250,0.95), rgba(45,212,191,0.85));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    /* HERO */
+    .hero{
+      position: relative;
+      height: 80vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hero::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://images.pexels.com/photos/3662846/pexels-photo-3662846.jpeg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1) contrast(1.1);
+      transform: scale(1.1);
+      opacity: 0.95;
+    }
+
+    .hero::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,12,20,0.55), rgba(10,12,20,0.75));
+    }
+
+    .hero-content{
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1{
+      font-size: 3rem;
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero-text p{
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 560px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions .btn-secondary{
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+
+    .hero-card{
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card h3{
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .hero-card ul{
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .hero-card li{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    /* GALLERY */
+    .gallery{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .gallery-title{
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid img{
+      width: 100%;
+      border-radius: 18px;
+      height: 240px;
+      object-fit: cover;
+      transition: transform .3s ease, filter .3s ease;
+      filter: saturate(1.05);
+    }
+
+    .grid img:hover{
+      transform: translateY(-6px);
+      filter: saturate(1.25) brightness(1.05);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px){
+      .hero-content{
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .grid{
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1{
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <img src="https://www.hamiltonfamilydentistry.ca/wp-content/uploads/2022/03/logo.png" alt="Logo">
+        Hamilton Family Dentistry
+      </div>
+
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <button class="btn">Book Now</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>High-Quality Dental Care for Your Smile</h1>
+        <p>
+          A modern, clean design that makes it easy for patients to book appointments,
+          understand services, and feel confident in your clinic — even on mobile.
+        </p>
+        <div class="hero-actions">
+          <button class="btn">Book Appointment</button>
+          <button class="btn btn-secondary">See Services</button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>What this upgrade includes</h3>
+        <ul>
+          <li><span class="dot"></span> Sticky modern navigation (glass effect)</li>
+          <li><span class="dot"></span> CSS Grid photo gallery</li>
+          <li><span class="dot"></span> Smooth button & form micro-interactions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-title">Clinic Gallery (Modern Layout)</div>
+    <div class="grid">
+      <img src="https://images.pexels.com/photos/3845760/pexels-photo-3845760.jpeg" alt="Clinic Image 1">
+      <img src="https://images.pexels.com/photos/3913007/pexels-photo-3913007.jpeg" alt="Clinic Image 2">
+      <img src="https://images.pexels.com/photos/4459/doctor-dentist-hospital-medical.jpg" alt="Clinic Image 3">
+    </div>
+  </section>
+
+</body>
+</html>
